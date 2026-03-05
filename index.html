@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lawsons Group - Corporate Overview</title>
+    <title>The Lawsons Group - Corporate Overview</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -13,6 +13,10 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- TrustBox script -->
+    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+    <!-- End TrustBox script -->
 
     <!-- Tailwind Config & Custom CSS -->
     <script>
@@ -243,7 +247,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6 max-w-6xl mx-auto drop-shadow-2xl">
                     <!-- Feature Card 1 -->
                     <a href="#about"
-                        class="bg-[#B9CCC1] p-6 md:p-14 border border-gray-300 transition-all duration-300 hover:-translate-y-3 hover:shadow-xl text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
+                        class="bg-[#E0E0E0] p-6 md:p-14 border border-gray-300 transition-all duration-300 hover:-translate-y-3 hover:shadow-xl text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
                         <div
                             class="absolute inset-0 bg-lawsons-green/5 opacity-0 group-hover:opacity-100 transition-opacity">
                         </div>
@@ -256,7 +260,7 @@
                     </a>
                     <!-- Feature Card 2 -->
                     <a href="#press"
-                        class="bg-[#B9CCC1] p-6 md:p-14 border border-gray-300 transition-all duration-300 hover:-translate-y-3 hover:shadow-xl text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
+                        class="bg-[#E0E0E0] p-6 md:p-14 border border-gray-300 transition-all duration-300 hover:-translate-y-3 hover:shadow-xl text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
                         <div
                             class="absolute inset-0 bg-lawsons-green/5 opacity-0 group-hover:opacity-100 transition-opacity">
                         </div>
@@ -268,19 +272,19 @@
                     </a>
                     <!-- Feature Card 3 -->
                     <a href="#events"
-                        class="bg-[#B9CCC1] p-6 md:p-14 border border-gray-300 transition-all duration-300 hover:-translate-y-3 hover:shadow-xl text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
+                        class="bg-[#E0E0E0] p-6 md:p-14 border border-gray-300 transition-all duration-300 hover:-translate-y-3 hover:shadow-xl text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
                         <div
-                            class="absolute inset-0 bg-lawsons-yellow/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                            class="absolute inset-0 bg-lawsons-green/5 opacity-0 group-hover:opacity-100 transition-opacity">
                         </div>
                         <span
                             class="text-lawsons-dark font-bold uppercase tracking-widest text-sm md:text-xl relative z-10">Events</span>
                         <div
-                            class="w-10 h-1 bg-lawsons-yellow mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
+                            class="w-10 h-1 bg-lawsons-green mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
                         </div>
                     </a>
                     <!-- Feature Card 4 -->
                     <a href="#careers"
-                        class="bg-[#B9CCC1] p-6 md:p-14 border border-gray-300 transition-all duration-300 hover:-translate-y-3 hover:shadow-xl text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
+                        class="bg-[#E0E0E0] p-6 md:p-14 border border-gray-300 transition-all duration-300 hover:-translate-y-3 hover:shadow-xl text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
                         <div
                             class="absolute inset-0 bg-lawsons-green/5 opacity-0 group-hover:opacity-100 transition-opacity">
                         </div>
@@ -297,19 +301,20 @@
     <!-- === END HERO COMPONENT === -->
 
     <!-- === STATS COMPONENT === -->
-    <section class="pt-8 md:pt-40 pb-0 md:pb-24 bg-gray-50 border-b border-gray-200">
+    <section class="pt-8 md:pt-40 pb-0 md:pb-24 bg-white">
         <div class="w-full">
-            <div class="grid grid-cols-3 gap-0 text-center shadow-2xl">
+            <div class="grid grid-cols-3 gap-0 text-center">
                 <!-- Stat 1 -->
                 <div
-                    class="p-8 md:p-20 bg-[#D3D3D3] text-lawsons-dark border-r border-gray-300 transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
+                    class="p-8 md:p-20 bg-white text-lawsons-dark border-r border-gray-200 transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
                     <div
                         class="absolute inset-0 bg-lawsons-green opacity-0 group-hover:opacity-5 transition-opacity duration-300">
                     </div>
                     <div
                         class="text-3xl md:text-6xl font-bold mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-500 ease-out relative z-10 text-lawsons-green">
-                        100+</div>
-                    <div class="text-xs md:text-base font-bold uppercase tracking-widest text-gray-500 relative z-10">
+                        <span class="count-up" data-target="100">0</span>+
+                    </div>
+                    <div class="text-xs md:text-base font-bold uppercase tracking-widest text-gray-700 relative z-10">
                         Years Trading
                     </div>
                     <div
@@ -318,14 +323,15 @@
                 </div>
                 <!-- Stat 2 -->
                 <div
-                    class="p-8 md:p-20 bg-[#D3D3D3] text-lawsons-dark border-r border-gray-300 transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
+                    class="p-8 md:p-20 bg-white text-lawsons-dark border-r border-gray-200 transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
                     <div
                         class="absolute inset-0 bg-lawsons-green opacity-0 group-hover:opacity-5 transition-opacity duration-300">
                     </div>
                     <div
                         class="text-3xl md:text-6xl font-bold mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-500 ease-out relative z-10 text-lawsons-green">
-                        700+</div>
-                    <div class="text-xs md:text-base font-bold uppercase tracking-widest text-gray-500 relative z-10">
+                        <span class="count-up" data-target="700">0</span>+
+                    </div>
+                    <div class="text-xs md:text-base font-bold uppercase tracking-widest text-gray-700 relative z-10">
                         Employees
                     </div>
                     <div
@@ -334,14 +340,15 @@
                 </div>
                 <!-- Stat 3 -->
                 <div
-                    class="p-8 md:p-20 bg-[#D3D3D3] text-lawsons-dark transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
+                    class="p-8 md:p-20 bg-white text-lawsons-dark transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
                     <div
                         class="absolute inset-0 bg-lawsons-green opacity-0 group-hover:opacity-5 transition-opacity duration-300">
                     </div>
                     <div
                         class="text-3xl md:text-6xl font-bold mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-500 ease-out relative z-10 text-lawsons-green">
-                        35+</div>
-                    <div class="text-xs md:text-base font-bold uppercase tracking-widest text-gray-500 relative z-10">
+                        <span class="count-up" data-target="35">0</span>+
+                    </div>
+                    <div class="text-xs md:text-base font-bold uppercase tracking-widest text-gray-700 relative z-10">
                         Branches
                     </div>
                     <div
@@ -353,22 +360,19 @@
     </section>
     <!-- === END STATS COMPONENT === -->
 
-    <!-- === TRUSTPILOT PLACEHOLDER COMPONENT === -->
-    <section class="py-24 bg-white border-b border-gray-200">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-16 uppercase tracking-widest"><span class="lawsons-underline">Trusted by
-                    the Trade</span>
-            </h2>
-
-            <!-- Elementor HTML block for Trustpilot Script goes inside this div -->
-            <div
-                class="max-w-4xl mx-auto bg-gray-50/50 p-16 border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-500 ease-in-out strict-square flex flex-col items-center justify-center min-h-[150px]">
-                <p class="text-gray-500 font-medium mb-2 tracking-wide">[ Trustpilot Widget Placeholder ]</p>
-                <p class="text-sm text-gray-400 font-light">Insert Elementor Trustpilot shortcode or raw HTML here.</p>
+    <!-- === TRUSTPILOT WIDGET === -->
+    <section class="py-6 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-4">
+            <!-- TrustBox widget - Horizontal -->
+            <div class="trustpilot-widget" data-locale="en-US" data-template-id="5406e65db0d04a09e042d5fc"
+                data-businessunit-id="4d258fe700006400050e58e9" data-style-height="28px" data-style-width="100%"
+                data-token="984cc4ce-a075-494b-8c94-e760674bbf2f">
+                <a href="https://www.trustpilot.com/review/lawsons.co.uk" target="_blank" rel="noopener">Trustpilot</a>
             </div>
+            <!-- End TrustBox widget -->
         </div>
     </section>
-    <!-- === END TRUSTPILOT PLACEHOLDER COMPONENT === -->
+    <!-- === END TRUSTPILOT WIDGET === -->
 
     <!-- === GROUP BRANDS SLIDER COMPONENT === -->
     <section class="py-16 bg-white border-b border-gray-100 overflow-hidden">
@@ -379,122 +383,178 @@
                 <div class="slide-track">
                     <!-- Original 7 -->
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Lawsons
-                        </h3>
+                        <a href="https://www.lawsons.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/lawsons-logo-2.png"
+                                alt="Lawsons">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">AVS
-                            Fencing</h3>
+                        <a href="https://www.avsfencing.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/AVS-Colour-2-1.png"
+                                alt="AVS Fencing">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Briants
-                        </h3>
+                        <a href="https://www.briantsltd.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/2015-Rect-logo-1-1300x334.png"
+                                alt="Briants">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Oxford
-                            Fencing</h3>
+                        <a href="https://www.oxfordfencing.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/Oxford-2.png"
+                                alt="Oxford Fencing">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
-                            Landscape Centre</h3>
+                        <a href="https://www.the-landscape-centre.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/TLC-2-400x103.png"
+                                alt="The Landscape Centre">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
-                            Southill Sawmills</h3>
+                        <a href="https://www.southillsawmills.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/Southill-2.png"
+                                alt="Southill Sawmills">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Witham
-                            Timber</h3>
+                        <a href="https://www.withamtimber.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/12/Witham-Timber-update-1300x303.png"
+                                alt="Witham Timber">
+                        </a>
                     </div>
 
                     <!-- Duplicate Set 1 -->
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Lawsons
-                        </h3>
+                        <a href="https://www.lawsons.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/lawsons-logo-2.png"
+                                alt="Lawsons">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">AVS
-                            Fencing</h3>
+                        <a href="https://www.avsfencing.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/AVS-Colour-2-1.png"
+                                alt="AVS Fencing">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Briants
-                        </h3>
+                        <a href="https://www.briantsltd.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/2015-Rect-logo-1-1300x334.png"
+                                alt="Briants">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Oxford
-                            Fencing</h3>
+                        <a href="https://www.oxfordfencing.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/Oxford-2.png"
+                                alt="Oxford Fencing">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
-                            Landscape Centre</h3>
+                        <a href="https://www.the-landscape-centre.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/TLC-2-400x103.png"
+                                alt="The Landscape Centre">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
-                            Southill Sawmills</h3>
+                        <a href="https://www.southillsawmills.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/Southill-2.png"
+                                alt="Southill Sawmills">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Witham
-                            Timber</h3>
+                        <a href="https://www.withamtimber.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/12/Witham-Timber-update-1300x303.png"
+                                alt="Witham Timber">
+                        </a>
                     </div>
 
                     <!-- Duplicate Set 2 -->
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Lawsons
-                        </h3>
+                        <a href="https://www.lawsons.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/lawsons-logo-2.png"
+                                alt="Lawsons">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">AVS
-                            Fencing</h3>
+                        <a href="https://www.avsfencing.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/AVS-Colour-2-1.png"
+                                alt="AVS Fencing">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Briants
-                        </h3>
+                        <a href="https://www.briantsltd.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/2015-Rect-logo-1-1300x334.png"
+                                alt="Briants">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Oxford
-                            Fencing</h3>
+                        <a href="https://www.oxfordfencing.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/Oxford-2.png"
+                                alt="Oxford Fencing">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
-                            Landscape Centre</h3>
+                        <a href="https://www.the-landscape-centre.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/TLC-2-400x103.png"
+                                alt="The Landscape Centre">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
-                            Southill Sawmills</h3>
+                        <a href="https://www.southillsawmills.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/Southill-2.png"
+                                alt="Southill Sawmills">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Witham
-                            Timber</h3>
+                        <a href="https://www.withamtimber.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/12/Witham-Timber-update-1300x303.png"
+                                alt="Witham Timber">
+                        </a>
                     </div>
 
                     <!-- Duplicate Set 3 -->
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Lawsons
-                        </h3>
+                        <a href="https://www.lawsons.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/lawsons-logo-2.png"
+                                alt="Lawsons">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">AVS
-                            Fencing</h3>
+                        <a href="https://www.avsfencing.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/AVS-Colour-2-1.png"
+                                alt="AVS Fencing">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Briants
-                        </h3>
+                        <a href="https://www.briantsltd.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/2015-Rect-logo-1-1300x334.png"
+                                alt="Briants">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Oxford
-                            Fencing</h3>
+                        <a href="https://www.oxfordfencing.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/Oxford-2.png"
+                                alt="Oxford Fencing">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
-                            Landscape Centre</h3>
+                        <a href="https://www.the-landscape-centre.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/TLC-2-400x103.png"
+                                alt="The Landscape Centre">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
-                            Southill Sawmills</h3>
+                        <a href="https://www.southillsawmills.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/Southill-2.png"
+                                alt="Southill Sawmills">
+                        </a>
                     </div>
                     <div class="brand-slide">
-                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Witham
-                            Timber</h3>
+                        <a href="https://www.withamtimber.co.uk" target="_blank" rel="noopener">
+                            <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/12/Witham-Timber-update-1300x303.png"
+                                alt="Witham Timber">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -540,7 +600,7 @@
 
                     <h3
                         class="text-xl font-bold text-lawsons-dark uppercase tracking-widest sticky top-0 bg-white pt-10 pb-4 px-10 lg:pt-14 lg:pb-6 lg:px-14 border-b border-gray-200 z-30 mb-8 shadow-sm">
-                        <span class="lawsons-underline">Our Brands</span>
+                        <span class="lawsons-underline">Our Branches</span>
                     </h3>
 
                     <div class="px-10 lg:px-14 pb-10 lg:pb-14 flex flex-col gap-8">
@@ -605,10 +665,22 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script>
+        // Brand website URLs for linking
+        const brandWebsites = {
+            lawsons: 'https://www.lawsons.co.uk/contact-us',
+            avs: 'https://www.avsfencing.co.uk/contact-us',
+            briants: 'https://www.briantsltd.co.uk/contact-us',
+            oxfordFencing: 'https://www.oxfordfencing.co.uk/contact-us',
+            landscapeCentre: 'https://www.the-landscape-centre.co.uk/contact-us',
+            southillSawmills: 'https://www.southillsawmills.co.uk/contact-us',
+            withamTimber: 'https://www.withamtimber.co.uk/contact-us',
+        };
+
         // Real-world exact coordinates replacing SVG % mapping
         const branchesData = {
             lawsons: {
                 color: "#009640", // Lawsons Green
+                contactUrl: brandWebsites.lawsons,
                 items: [
                     { name: "Acton", address: "2/4 Colville Rd, London, W3 8BL", phone: "020 8992 1177", lat: 51.528, lng: -0.274 },
                     { name: "Ascot", address: "Englemere sawmill, London Rd, Winkfield Row, Ascot, SL5 8DG", phone: "01344 885451", lat: 51.411, lng: -0.672 },
@@ -633,6 +705,7 @@
             },
             avs: {
                 color: "#1E3A8A", // AVS Dark Blue
+                contactUrl: brandWebsites.avs,
                 items: [
                     { name: "Aylesbury", address: "Hartwell Nurseries, Ford Road, Stone, Aylesbury, HP17 8RZ", phone: "01296 747048", lat: 51.815, lng: -0.812 },
                     { name: "Basingstoke", address: "Herriard Sawmill, Herriard, Basingstoke, RG25 2PH", phone: "01256 381585", lat: 51.262, lng: -1.087 },
@@ -650,23 +723,23 @@
             },
             specialist: {
                 items: [
-                    { name: "Briants", address: "Green Close Works, Thame Rd, Longwick, Princes Risborough HP27 9SG", color: "#9333EA", lat: 51.724, lng: -0.831 }, // Purple
-                    { name: "Oxford Fencing", address: "Kingston Business Park, Kingston Bagpuize, Abingdon OX13 5AS", color: "#EA580C", lat: 51.678, lng: -1.382 }, // Orange
-                    { name: "The Landscape Centre", address: "Does Corner, Maldon Rd, Ulting, Maldon CM9 6QQ", color: "#16A34A", lat: 51.731, lng: 0.671 }, // Brighter Green
-                    { name: "Southill Sawmills", address: "Southill, Park, Southill, Biggleswade SG18 9LW", color: "#B45309", lat: 52.083, lng: -0.324 }, // Brown
-                    { name: "Witham Timber", address: "Lealand Way, Marsh Ln, Boston PE21 7SW", color: "#E11D48", lat: 52.977, lng: -0.024 }, // Rose Red
+                    { name: "Briants", address: "Green Close Works, Thame Rd, Longwick, Princes Risborough HP27 9SG", color: "#9333EA", lat: 51.724, lng: -0.831, contactUrl: brandWebsites.briants },
+                    { name: "Oxford Fencing", address: "Kingston Business Park, Kingston Bagpuize, Abingdon OX13 5AS", color: "#EA580C", lat: 51.678, lng: -1.382, contactUrl: brandWebsites.oxfordFencing },
+                    { name: "The Landscape Centre", address: "Does Corner, Maldon Rd, Ulting, Maldon CM9 6QQ", color: "#16A34A", lat: 51.731, lng: 0.671, contactUrl: brandWebsites.landscapeCentre },
+                    { name: "Southill Sawmills", address: "Southill, Park, Southill, Biggleswade SG18 9LW", color: "#B45309", lat: 52.083, lng: -0.324, contactUrl: brandWebsites.southillSawmills },
+                    { name: "Witham Timber", address: "Lealand Way, Marsh Ln, Boston PE21 7SW", color: "#E11D48", lat: 52.977, lng: -0.024, contactUrl: brandWebsites.withamTimber },
                 ]
             }
         };
 
-        // Render helper
-        const createBranchHTML = (branch, brandColor = null) => `
+        // Render helper — now with contact links
+        const createBranchHTML = (branch, brandColor = null, contactUrl = null) => `
             <div class="bg-white p-6 border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out group relative overflow-hidden" style="border-left: 4px solid ${brandColor || branch.color};">
                 <div class="absolute top-0 left-0 w-0 h-full opacity-10 group-hover:w-full transition-all duration-500 ease-in-out" style="background-color: ${brandColor || branch.color};"></div>
                 <h5 class="font-semibold tracking-wide text-lawsons-dark text-base" style="color: ${brandColor || branch.color};">${branch.name}</h5>
                 <p class="text-xs font-light text-gray-500 mt-2 mb-3 leading-relaxed tracking-wide relative z-10">${branch.address}</p>
                 ${branch.phone ? `<p class="text-xs font-medium text-lawsons-dark mb-4 tracking-wider relative z-10">📞 ${branch.phone}</p>` : ''}
-                <a href="#" class="inline-block text-[10px] font-bold uppercase tracking-widest text-lawsons-dark hover:text-black transition-colors relative z-10">
+                <a href="${contactUrl || branch.contactUrl || '#'}" target="_blank" rel="noopener" class="inline-block text-[10px] font-bold uppercase tracking-widest text-lawsons-dark hover:text-black transition-colors relative z-10">
                     <span class="relative z-10">More Information</span>
                     <span class="absolute bottom-[-4px] left-0 w-full h-[1px] transition-colors" style="background-color: ${brandColor || branch.color};"></span>
                 </a>
@@ -679,8 +752,8 @@
         let lawsonsHtmlCol1 = '';
         let lawsonsHtmlCol2 = '';
         branchesData.lawsons.items.forEach((b, i) => {
-            if (i < halfLawsons) lawsonsHtmlCol1 += createBranchHTML(b, branchesData.lawsons.color);
-            else lawsonsHtmlCol2 += createBranchHTML(b, branchesData.lawsons.color);
+            if (i < halfLawsons) lawsonsHtmlCol1 += createBranchHTML(b, branchesData.lawsons.color, branchesData.lawsons.contactUrl);
+            else lawsonsHtmlCol2 += createBranchHTML(b, branchesData.lawsons.color, branchesData.lawsons.contactUrl);
         });
 
         // Setup two columns dynamically
@@ -695,8 +768,8 @@
         let avsHtmlCol2 = '';
         const halfAvs = Math.ceil(branchesData.avs.items.length / 2);
         branchesData.avs.items.forEach((b, i) => {
-            if (i < halfAvs) avsHtmlCol1 += createBranchHTML(b, branchesData.avs.color);
-            else avsHtmlCol2 += createBranchHTML(b, branchesData.avs.color);
+            if (i < halfAvs) avsHtmlCol1 += createBranchHTML(b, branchesData.avs.color, branchesData.avs.contactUrl);
+            else avsHtmlCol2 += createBranchHTML(b, branchesData.avs.color, branchesData.avs.contactUrl);
         });
 
         const avsGrid = document.querySelector('.avs-branch-list').parentElement;
@@ -708,7 +781,7 @@
         // Populate Specialists
         let specHtml = '';
         branchesData.specialist.items.forEach((b) => {
-            specHtml += createBranchHTML(b); // uses internal branch.color
+            specHtml += createBranchHTML(b); // uses internal branch.color and branch.contactUrl
         });
         document.querySelector('.specialist-branch-list').innerHTML = specHtml;
 
@@ -723,6 +796,40 @@
 
         document.querySelectorAll('.animate-on-scroll').forEach((el) => {
             observer.observe(el);
+        });
+
+        // === COUNT-UP ANIMATION ===
+        const countUpObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-target'), 10);
+                    const duration = 2000; // 2 seconds
+                    const startTime = performance.now();
+
+                    const animate = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        // Ease-out cubic for smooth deceleration
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const current = Math.round(eased * target);
+                        el.textContent = current;
+
+                        if (progress < 1) {
+                            requestAnimationFrame(animate);
+                        } else {
+                            el.textContent = target;
+                        }
+                    };
+
+                    requestAnimationFrame(animate);
+                    countUpObserver.unobserve(el); // Only animate once
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.count-up').forEach((el) => {
+            countUpObserver.observe(el);
         });
 
         // 2. Leaflet Map Initialization
@@ -772,9 +879,9 @@
             }
         });
 
-        // Automatically zoom and pan to perfectly frame all generated markers
+        // Automatically zoom and pan to perfectly frame all generated markers — zoomed in slightly more
         if (bounds.length > 0) {
-            map.fitBounds(bounds, { padding: [50, 50] });
+            map.fitBounds(bounds, { padding: [30, 30], maxZoom: 9 });
         }
 
         // Hero Slider Auto-Cycle
