@@ -804,7 +804,7 @@
                 if (entry.isIntersecting) {
                     const el = entry.target;
                     const target = parseInt(el.getAttribute('data-target'), 10);
-                    const duration = 2000; // 2 seconds
+                    const duration = 4000; // 4 seconds (slowed down from 2s)
                     const startTime = performance.now();
 
                     const animate = (currentTime) => {
