@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawsons Group - Corporate Overview</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Tailwind Config & Custom CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'lawsons-green': '#009640',
+                        'lawsons-yellow': '#FFE600',
+                        'lawsons-dark': '#373737',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            color: #373737;
+            background-color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Essential underline rule for major headings */
+        .lawsons-underline {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 0.25em;
+            /* Space for the underline */
+        }
+
+        .lawsons-underline::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            bottom: -12px;
+            left: 0;
+            background-color: #FFE600;
+        }
+
+        /* Heavy duty button style */
+        .btn-lawsons {
+            display: inline-block;
+            background-color: #373737;
+            color: white;
+            padding: 1rem 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease-in-out;
+            border: 1px solid transparent;
+        }
+
+        .btn-lawsons:hover {
+            background-color: #009640;
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(0, 150, 64, 0.39);
+        }
+
+        .btn-lawsons-outline {
+            display: inline-block;
+            background-color: transparent;
+            color: #373737;
+            padding: 1rem 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #373737;
+        }
+
+        .btn-lawsons-outline:hover {
+            background-color: #373737;
+            color: white;
+            border-color: #373737;
+        }
+
+        /* Strict square corners representing heavy-duty built environment */
+        .strict-square {
+            border-radius: 0 !important;
+        }
+
+        /* Micro-Animations Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 600ms ease-out, transform 600ms ease-out;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes pulse-ring-marker {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+            }
+
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+
+        /* Leaflet custom overrides */
+        .leaflet-tooltip.custom-tooltip {
+            background-color: white;
+            border: 2px solid #009640;
+            color: #1a202c;
+            font-weight: bold;
+            font-family: 'Inter', sans-serif;
+            border-radius: 0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 8px 12px;
+        }
+
+        .leaflet-tooltip.custom-tooltip::before {
+            border-top-color: #009640;
+        }
+
+        /* Infinite Logo Marquee */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-250px * 7));
+            }
+
+            /* 7 logos per set */
+        }
+
+        .slider-marquee {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .slide-track {
+            display: flex;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+        }
+
+        .slide-track:hover {
+            animation-play-state: paused;
+        }
+
+        .brand-slide {
+            width: 250px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            filter: grayscale(100%) opacity(50%);
+            transition: all 0.4s ease;
+        }
+
+        .brand-slide:hover {
+            filter: grayscale(0%) opacity(100%);
+            transform: scale(1.05);
+        }
+
+        .brand-slide img {
+            max-width: 100%;
+            max-height: 50px;
+            object-fit: contain;
+        }
+
+        /* Hero Crossfade Slider */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 0.6;
+        }
+    </style>
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+    <!-- === HERO COMPONENT === -->
+    <!-- Can be extracted as a single Elementor block -->
+    <section class="relative w-full bg-lawsons-dark">
+        <!-- Hero Background Slider -->
+        <div class="relative w-full h-[60vh] md:h-[70vh] bg-lawsons-dark overflow-hidden strict-square">
+            <img src="hero-1.jpg" alt="Lawsons Timber Yard" class="hero-slide active mix-blend-overlay">
+            <img src="hero-2.jpg" alt="Lawsons Branch Aerial View" class="hero-slide mix-blend-overlay">
+            <img src="hero-3.jpg" alt="Lawsons Building Supplies" class="hero-slide mix-blend-overlay">
+            <div class="absolute inset-0 bg-black/40 z-10"></div> <!-- Dark overlay for text contrast -->
+
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-20">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-8 uppercase tracking-widest">
+                    <span class="lawsons-underline">The Lawsons Group</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-200 font-light max-w-3xl tracking-wide mt-4">
+                    Building the future on a century of heritage.
+                </p>
+            </div>
+        </div>
+
+        <!-- Hero Navigation Bar (Overlapping Feature Cards) -->
+        <div class="absolute bottom-0 left-0 w-full z-20 translate-y-1/2">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto drop-shadow-2xl">
+                    <!-- Feature Card 1 -->
+                    <a href="#about"
+                        class="bg-gradient-to-br from-lawsons-green to-green-800 p-12 md:p-14 border border-green-600 transition-all duration-300 hover:-translate-y-3 text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
+                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <span
+                            class="text-white font-bold uppercase tracking-widest text-lg md:text-xl relative z-10">About
+                            Us</span>
+                        <div
+                            class="w-10 h-1 bg-lawsons-yellow mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
+                        </div>
+                    </a>
+                    <!-- Feature Card 2 -->
+                    <a href="#press"
+                        class="bg-gradient-to-br from-lawsons-dark to-gray-800 p-12 md:p-14 border border-gray-600 transition-all duration-300 hover:-translate-y-3 text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
+                        <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <span
+                            class="text-white font-bold uppercase tracking-widest text-lg md:text-xl relative z-10">Press</span>
+                        <div
+                            class="w-10 h-1 bg-lawsons-green mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
+                        </div>
+                    </a>
+                    <!-- Feature Card 3 -->
+                    <a href="#events"
+                        class="bg-gradient-to-br from-lawsons-yellow to-yellow-500 p-12 md:p-14 border border-yellow-400 transition-all duration-300 hover:-translate-y-3 text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
+                        <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <span
+                            class="text-lawsons-dark font-extrabold uppercase tracking-widest text-lg md:text-xl relative z-10">Events</span>
+                        <div
+                            class="w-10 h-1 bg-lawsons-green mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
+                        </div>
+                    </a>
+                    <!-- Feature Card 4 -->
+                    <a href="#careers"
+                        class="bg-gradient-to-br from-lawsons-dark to-gray-800 p-12 md:p-14 border border-gray-600 transition-all duration-300 hover:-translate-y-3 text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
+                        <div
+                            class="absolute inset-0 bg-lawsons-green/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <span
+                            class="text-white font-bold uppercase tracking-widest text-lg md:text-xl relative z-10">Careers</span>
+                        <div
+                            class="w-10 h-1 bg-lawsons-yellow mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- === END HERO COMPONENT === -->
+
+    <!-- === STATS COMPONENT === -->
+    <section class="pt-32 md:pt-40 pb-20 md:pb-24 bg-gray-50 border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-0 text-center max-w-6xl mx-auto shadow-2xl">
+                <!-- Stat 1 -->
+                <div
+                    class="p-16 md:p-20 bg-lawsons-dark text-white border-r border-gray-700 transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300">
+                    </div>
+                    <div
+                        class="text-5xl md:text-6xl font-bold mb-6 group-hover:scale-110 transition-transform duration-500 ease-out relative z-10 text-lawsons-yellow">
+                        100+</div>
+                    <div class="text-base font-bold uppercase tracking-widest text-white/90 relative z-10">Years Trading
+                    </div>
+                    <div
+                        class="w-16 h-[4px] bg-lawsons-green mt-6 transition-all duration-300 group-hover:w-24 relative z-10">
+                    </div>
+                </div>
+                <!-- Stat 2 -->
+                <div
+                    class="p-16 md:p-20 bg-lawsons-dark text-white border-r border-gray-700 transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300">
+                    </div>
+                    <div
+                        class="text-5xl md:text-6xl font-bold mb-6 group-hover:scale-110 transition-transform duration-500 ease-out relative z-10 text-lawsons-yellow">
+                        700+</div>
+                    <div class="text-base font-bold uppercase tracking-widest text-white/90 relative z-10">Employees
+                    </div>
+                    <div
+                        class="w-16 h-[4px] bg-lawsons-green mt-6 transition-all duration-300 group-hover:w-24 relative z-10">
+                    </div>
+                </div>
+                <!-- Stat 3 -->
+                <div
+                    class="p-16 md:p-20 bg-lawsons-dark text-white transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300">
+                    </div>
+                    <div
+                        class="text-5xl md:text-6xl font-bold mb-6 group-hover:scale-110 transition-transform duration-500 ease-out relative z-10 text-lawsons-yellow">
+                        35+</div>
+                    <div class="text-base font-bold uppercase tracking-widest text-white/90 relative z-10">Branches
+                    </div>
+                    <div
+                        class="w-16 h-[4px] bg-lawsons-green mt-6 transition-all duration-300 group-hover:w-24 relative z-10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- === END STATS COMPONENT === -->
+
+    <!-- === TRUSTPILOT PLACEHOLDER COMPONENT === -->
+    <section class="py-24 bg-white border-b border-gray-200">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-16 uppercase tracking-widest"><span class="lawsons-underline">Trusted by
+                    the Trade</span>
+            </h2>
+
+            <!-- Elementor HTML block for Trustpilot Script goes inside this div -->
+            <div
+                class="max-w-4xl mx-auto bg-gray-50/50 p-16 border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-500 ease-in-out strict-square flex flex-col items-center justify-center min-h-[150px]">
+                <p class="text-gray-500 font-medium mb-2 tracking-wide">[ Trustpilot Widget Placeholder ]</p>
+                <p class="text-sm text-gray-400 font-light">Insert Elementor Trustpilot shortcode or raw HTML here.</p>
+            </div>
+        </div>
+    </section>
+    <!-- === END TRUSTPILOT PLACEHOLDER COMPONENT === -->
+
+    <!-- === GROUP BRANDS SLIDER COMPONENT === -->
+    <section class="py-16 bg-white border-b border-gray-100 overflow-hidden">
+        <div class="container mx-auto">
+            <h4 class="text-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-10">Part of the Lawsons
+                Group</h4>
+            <div class="slider-marquee">
+                <div class="slide-track">
+                    <!-- Original 7 -->
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Lawsons
+                        </h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">AVS
+                            Fencing</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Briants
+                        </h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Oxford
+                            Fencing</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                            Landscape Centre</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                            Southill Sawmills</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Witham
+                            Timber</h3>
+                    </div>
+
+                    <!-- Duplicate Set 1 -->
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Lawsons
+                        </h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">AVS
+                            Fencing</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Briants
+                        </h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Oxford
+                            Fencing</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                            Landscape Centre</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                            Southill Sawmills</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Witham
+                            Timber</h3>
+                    </div>
+
+                    <!-- Duplicate Set 2 -->
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Lawsons
+                        </h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">AVS
+                            Fencing</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Briants
+                        </h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Oxford
+                            Fencing</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                            Landscape Centre</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                            Southill Sawmills</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Witham
+                            Timber</h3>
+                    </div>
+
+                    <!-- Duplicate Set 3 -->
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Lawsons
+                        </h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">AVS
+                            Fencing</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Briants
+                        </h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Oxford
+                            Fencing</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                            Landscape Centre</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
+                            Southill Sawmills</h3>
+                    </div>
+                    <div class="brand-slide">
+                        <h3 class="text-xl font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Witham
+                            Timber</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- === END GROUP BRANDS SLIDER COMPONENT === -->
+
+    <!-- === LOCATIONS & BRANDS COMPONENT === -->
+    <section class="py-24 md:py-32 bg-gray-50">
+        <div class="container mx-auto px-4">
+
+            <div class="text-center mb-24">
+                <h2 class="text-4xl font-bold uppercase text-lawsons-dark mb-8 tracking-widest">
+                    <span class="lawsons-underline">Our National Network</span>
+                </h2>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto font-light tracking-wide leading-relaxed">Serving the
+                    trade through our
+                    comprehensive network of specialist brands.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start max-w-7xl mx-auto">
+
+                <!-- Left Column: Map -->
+                <div
+                    class="bg-white border border-gray-200 shadow-sm p-2 strict-square relative min-h-[500px] lg:min-h-[700px] flex items-center justify-center overflow-hidden group">
+
+                    <!-- Leaflet map container -->
+                    <div id="map" class="absolute inset-0 w-full h-full z-0"></div>
+
+                    <!-- Overlay text -->
+                    <div
+                        class="absolute bottom-10 left-10 z-20 bg-lawsons-dark text-white p-6 border border-gray-600 shadow-xl strict-square text-left max-w-xs transition-transform duration-500 pointer-events-none">
+                        <h3 class="text-xl font-bold uppercase mb-2 tracking-widest text-white"><span
+                                class="lawsons-underline">National</span></h3>
+                        <p class="text-xs font-light text-gray-300 tracking-wider">Serving you from over 35 specialist
+                            locations across the UK.</p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Brands & Branches Directory -->
+                <div class="bg-white border border-gray-200 shadow-sm strict-square h-[500px] lg:h-[700px] overflow-y-auto hover:shadow-lg transition-shadow duration-500 ease-in-out relative"
+                    style="scrollbar-width: thin; scrollbar-color: #009640 #f9fafb;">
+
+                    <h3
+                        class="text-xl font-bold text-lawsons-dark uppercase tracking-widest sticky top-0 bg-white pt-10 pb-4 px-10 lg:pt-14 lg:pb-6 lg:px-14 border-b border-gray-200 z-30 mb-8 shadow-sm">
+                        <span class="lawsons-underline">Our Brands</span>
+                    </h3>
+
+                    <div class="px-10 lg:px-14 pb-10 lg:pb-14 flex flex-col gap-8">
+                        <!-- Lawsons Branches -->
+                        <div class="mb-6">
+                            <h4
+                                class="text-sm font-bold tracking-widest uppercase text-lawsons-green mb-6 flex items-center gap-3">
+                                <span class="w-[3px] h-[3px] bg-lawsons-yellow inline-block strict-square"></span>
+                                Lawsons
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- JS will populate these blocks -->
+                                <div class="lawsons-branch-list flex flex-col gap-4"></div>
+                            </div>
+                        </div>
+
+                        <!-- AVS Branches -->
+                        <div class="mb-6">
+                            <h4
+                                class="text-sm font-bold tracking-widest uppercase text-lawsons-green mb-6 flex items-center gap-3">
+                                <span class="w-[3px] h-[3px] bg-lawsons-yellow inline-block strict-square"></span>
+                                AVS Fencing
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- JS will populate these blocks -->
+                                <div class="avs-branch-list flex flex-col gap-4"></div>
+                            </div>
+                        </div>
+
+                        <!-- Specialist Brands -->
+                        <div>
+                            <h4
+                                class="text-sm font-bold tracking-widest uppercase text-lawsons-green mb-6 flex items-center gap-3">
+                                <span class="w-[3px] h-[3px] bg-lawsons-yellow inline-block strict-square"></span>
+                                Specialist Brands
+                            </h4>
+                            <div class="grid grid-cols-1 gap-4">
+                                <!-- JS will populate these blocks -->
+                                <div class="specialist-branch-list flex flex-col gap-3"></div>
+                            </div>
+                        </div>
+
+                    </div> <!-- End of inner padded container -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- === END LOCATIONS & BRANDS COMPONENT === -->
+
+    <!-- === FOOTER PLACEHOLDER === -->
+    <footer class="bg-lawsons-dark text-white py-16 border-t border-lawsons-green">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-xl font-bold uppercase mb-6 text-gray-300 tracking-widest">The Lawsons Group</h2>
+            <div class="w-12 h-[1px] bg-lawsons-yellow mx-auto mb-8 opacity-50"></div>
+            <p class="text-sm text-gray-500 font-light tracking-wide">&copy;
+                <script>document.write(new Date().getFullYear())</script> The Lawsons Group. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS Script -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        // Real-world exact coordinates replacing SVG % mapping
+        const branchesData = {
+            lawsons: {
+                color: "#009640", // Lawsons Green
+                items: [
+                    { name: "Acton", address: "2/4 Colville Rd, London, W3 8BL", phone: "020 8992 1177", lat: 51.528, lng: -0.274 },
+                    { name: "Ascot", address: "Englemere sawmill, London Rd, Winkfield Row, Ascot, SL5 8DG", phone: "01344 885451", lat: 51.411, lng: -0.672 },
+                    { name: "Bedford", address: "Cambridge Rd, Bedford, MK42 0LH", phone: "01234 273077", lat: 52.126, lng: -0.463 },
+                    { name: "Camden", address: "North, 53 Blundell St, London, N7 9BN", phone: "020 7619 6470", lat: 51.543, lng: -0.133 },
+                    { name: "Crawley", address: "Telford Pl, Crawley, RH10 1SY", phone: "01293 535054", lat: 51.116, lng: -0.183 },
+                    { name: "Colney Heath", address: "Tyttenhanger Farm, Coursers Rd, St Albans AL4 0PG", phone: "01727 747320", lat: 51.740, lng: -0.252 },
+                    { name: "Coulsdon", address: "Woodcote Grove Rd, Coulsdon CR5 2AG", phone: "020 8660 0807", lat: 51.320, lng: -0.136 },
+                    { name: "Edgware", address: "301 Burnt Oak Broadway, Burnt Oak, Edgware HA8 5ED", phone: "020 8952 0111", lat: 51.611, lng: -0.278 },
+                    { name: "Edmonton", address: "401 Montagu Rd, London N9 0HP", phone: "020 8803 6922", lat: 51.625, lng: -0.053 },
+                    { name: "Letchworth", address: "Unit 1 Umo Park, Blackhorse Rd, Letchworth Garden City SG6 1HR", phone: "01462 686838", lat: 51.982, lng: -0.230 },
+                    { name: "Merton", address: "5-7 Lombard Rd, London SW19 3TZ", phone: "020 8884 5020", lat: 51.416, lng: -0.190 },
+                    { name: "New Malden", address: "Unit 16, Adams Industrial Estate, St Johns Rd, New Malden KT3 3SQ", phone: "020 8336 1188", lat: 51.401, lng: -0.254 },
+                    { name: "Salfords", address: "Bonehurst Rd, Salfords RH6 8PP", phone: "01293 784459", lat: 51.189, lng: -0.169 },
+                    { name: "Sidcup", address: "Unit 2 Five Arches Business Estate, Maidstone Rd, Sidcup DA14 5AE", phone: "020 8312 1902", lat: 51.424, lng: 0.103 },
+                    { name: "Southill", address: "Southill Play Area, Southill, Biggleswade SG18 9LW", phone: "01462 819173", lat: 52.083, lng: -0.324 },
+                    { name: "Redhill", address: "58 Holmethorpe Ave, Holmethorpe, Redhill RH1 2NL", phone: "01737 766884", lat: 51.246, lng: -0.165 },
+                    { name: "Romford", address: "164 Collier Row Rd, Romford RM5 2BD", phone: "01708 767716", lat: 51.591, lng: 0.183 },
+                    { name: "Wandsworth", address: "20 Smugglers Way, London, SW18 1EG", phone: "020 8871 1188", lat: 51.461, lng: -0.192 },
+                    { name: "Whetstone", address: "1208 High Rd, London N20 0LL", phone: "020 8446 1321", lat: 51.632, lng: -0.177 }
+                ]
+            },
+            avs: {
+                color: "#1E3A8A", // AVS Dark Blue
+                items: [
+                    { name: "Aylesbury", address: "Hartwell Nurseries, Ford Road, Stone, Aylesbury, HP17 8RZ", phone: "01296 747048", lat: 51.815, lng: -0.812 },
+                    { name: "Basingstoke", address: "Herriard Sawmill, Herriard, Basingstoke, RG25 2PH", phone: "01256 381585", lat: 51.262, lng: -1.087 },
+                    { name: "Bishops Stortford", address: "Horse Cross, Standon, Near Ware, SG11 2PU", phone: "01920 822055", lat: 51.870, lng: 0.160 },
+                    { name: "Chichester", address: "Leythorne Nursery, Vinnetrow Rd, Chichester PO20 1QD", phone: "01243 973397", lat: 50.836, lng: -0.779 },
+                    { name: "Guildford", address: "Unit 1 AVS Trading Park, Chapel Lane, Milford, Godalming, GU8 5HE", phone: "01483 410 960", lat: 51.236, lng: -0.570 },
+                    { name: "Havant", address: "Stansted Sawmill, Stansted Park, Rowland's Castle, PO9 6DU", phone: "02392 412445", lat: 50.852, lng: -0.981 },
+                    { name: "Henfield", address: "Brookfields Farm, Woodmancote, Henfield, BN5 9TL", phone: "01273 492969", lat: 50.932, lng: -0.275 },
+                    { name: "Lewes", address: "Southdown Works, Laughton Road, Ringmer, Lewes, BN8 5PN", phone: "01273 814567", lat: 50.874, lng: 0.013 },
+                    { name: "Peterborough", address: "Saville Road, Peterborough PE3 7NZ", phone: "01733 343030", lat: 52.573, lng: -0.244 },
+                    { name: "Rudgwick", address: "Brookside Rural Park, Church Street, Rudgwick, RH12 3AU", phone: "01403 823401", lat: 51.096, lng: -0.448 },
+                    { name: "Wokingham", address: "Warren Farm, Forest Road, Wokingham, RG40 5QY", phone: "01189 893475", lat: 51.412, lng: -0.835 },
+                    { name: "Worthing", address: "Highdown Ind Park, Littlehampton Road, Worthing, West Sussex, BN12 6PG", phone: "01903 249854", lat: 50.812, lng: -0.370 },
+                ]
+            },
+            specialist: {
+                items: [
+                    { name: "Briants", address: "Green Close Works, Thame Rd, Longwick, Princes Risborough HP27 9SG", color: "#9333EA", lat: 51.724, lng: -0.831 }, // Purple
+                    { name: "Oxford Fencing", address: "Kingston Business Park, Kingston Bagpuize, Abingdon OX13 5AS", color: "#EA580C", lat: 51.678, lng: -1.382 }, // Orange
+                    { name: "The Landscape Centre", address: "Does Corner, Maldon Rd, Ulting, Maldon CM9 6QQ", color: "#16A34A", lat: 51.731, lng: 0.671 }, // Brighter Green
+                    { name: "Southill Sawmills", address: "Southill, Park, Southill, Biggleswade SG18 9LW", color: "#B45309", lat: 52.083, lng: -0.324 }, // Brown
+                    { name: "Witham Timber", address: "Lealand Way, Marsh Ln, Boston PE21 7SW", color: "#E11D48", lat: 52.977, lng: -0.024 }, // Rose Red
+                ]
+            }
+        };
+
+        // Render helper
+        const createBranchHTML = (branch, brandColor = null) => `
+            <div class="bg-white p-6 border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out group relative overflow-hidden" style="border-left: 4px solid ${brandColor || branch.color};">
+                <div class="absolute top-0 left-0 w-0 h-full opacity-10 group-hover:w-full transition-all duration-500 ease-in-out" style="background-color: ${brandColor || branch.color};"></div>
+                <h5 class="font-semibold tracking-wide text-lawsons-dark text-base" style="color: ${brandColor || branch.color};">${branch.name}</h5>
+                <p class="text-xs font-light text-gray-500 mt-2 mb-3 leading-relaxed tracking-wide relative z-10">${branch.address}</p>
+                ${branch.phone ? `<p class="text-xs font-medium text-lawsons-dark mb-4 tracking-wider relative z-10">📞 ${branch.phone}</p>` : ''}
+                <a href="#" class="inline-block text-[10px] font-bold uppercase tracking-widest text-lawsons-dark hover:text-black transition-colors relative z-10">
+                    <span class="relative z-10">More Information</span>
+                    <span class="absolute bottom-[-4px] left-0 w-full h-[1px] transition-colors" style="background-color: ${brandColor || branch.color};"></span>
+                </a>
+            </div>
+        `;
+
+        // Populate Lawsons (split into two columns for JS rendering simplicity, or append to container)
+        const halfLawsons = Math.ceil(branchesData.lawsons.items.length / 2);
+
+        let lawsonsHtmlCol1 = '';
+        let lawsonsHtmlCol2 = '';
+        branchesData.lawsons.items.forEach((b, i) => {
+            if (i < halfLawsons) lawsonsHtmlCol1 += createBranchHTML(b, branchesData.lawsons.color);
+            else lawsonsHtmlCol2 += createBranchHTML(b, branchesData.lawsons.color);
+        });
+
+        // Setup two columns dynamically
+        const lawsonsGrid = document.querySelector('.lawsons-branch-list').parentElement;
+        lawsonsGrid.innerHTML = `
+            <div class="flex flex-col gap-5">${lawsonsHtmlCol1}</div>
+            <div class="flex flex-col gap-5">${lawsonsHtmlCol2}</div>
+        `;
+
+        // Populate AVS
+        let avsHtmlCol1 = '';
+        let avsHtmlCol2 = '';
+        const halfAvs = Math.ceil(branchesData.avs.items.length / 2);
+        branchesData.avs.items.forEach((b, i) => {
+            if (i < halfAvs) avsHtmlCol1 += createBranchHTML(b, branchesData.avs.color);
+            else avsHtmlCol2 += createBranchHTML(b, branchesData.avs.color);
+        });
+
+        const avsGrid = document.querySelector('.avs-branch-list').parentElement;
+        avsGrid.innerHTML = `
+            <div class="flex flex-col gap-5">${avsHtmlCol1}</div>
+            <div class="flex flex-col gap-5">${avsHtmlCol2}</div>
+        `;
+
+        // Populate Specialists
+        let specHtml = '';
+        branchesData.specialist.items.forEach((b) => {
+            specHtml += createBranchHTML(b); // uses internal branch.color
+        });
+        document.querySelector('.specialist-branch-list').innerHTML = specHtml;
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // 2. Leaflet Map Initialization
+        const map = L.map('map', {
+            zoomControl: false,
+            scrollWheelZoom: false, // prevents accidental scroll trapping
+            attributionControl: false // Removes the Leaflet copyright text fully and cleanly
+        }).setView([51.528, -0.274], 8);
+
+        L.control.zoom({ position: 'topright' }).addTo(map);
+
+        // Standard CartoDB Light Tile layer for a super clean premium web look
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://carto.com/">CartoDB</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+
+        const allBranches = [];
+        branchesData.lawsons.items.forEach(b => allBranches.push({ ...b, color: branchesData.lawsons.color, brand: "Lawsons" }));
+        branchesData.avs.items.forEach(b => allBranches.push({ ...b, color: branchesData.avs.color, brand: "AVS Fencing" }));
+        branchesData.specialist.items.forEach(b => allBranches.push({ ...b, color: b.color, brand: "Specialist" }));
+
+        const createMarkerIcon = (color) => {
+            return L.divIcon({
+                className: 'custom-map-marker',
+                html: `<div style="background-color: ${color}; width: 14px; height: 14px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 0 rgba(255,255,255,0.7); animation: pulse-ring-marker 2s infinite cubic-bezier(0.66, 0, 0, 1);"></div>`,
+                iconSize: [14, 14],
+                iconAnchor: [7, 7]
+            });
+        };
+
+        const bounds = [];
+        allBranches.forEach((branch) => {
+            if (branch.lat && branch.lng) {
+                const marker = L.marker([branch.lat, branch.lng], {
+                    icon: createMarkerIcon(branch.color)
+                }).addTo(map);
+
+                marker.bindTooltip(branch.name, {
+                    direction: 'top',
+                    offset: [0, -10],
+                    className: 'custom-tooltip'
+                });
+
+                bounds.push([branch.lat, branch.lng]);
+            }
+        });
+
+        // Automatically zoom and pan to perfectly frame all generated markers
+        if (bounds.length > 0) {
+            map.fitBounds(bounds, { padding: [50, 50] });
+        }
+
+        // Hero Slider Auto-Cycle
+        (() => {
+            const slides = document.querySelectorAll('.hero-slide');
+            let current = 0;
+            setInterval(() => {
+                slides[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            }, 5000);
+        })();
+
+    </script>
+</body>
+
+</html>

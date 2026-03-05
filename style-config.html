@@ -1,0 +1,39 @@
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'lawsons-green': '#009640',
+          'lawsons-yellow': '#FFE600',
+          'lawsons-dark': '#373737',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'], // Professional sans-serif
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  /* Custom underline utility for the "crucial rule" */
+  .underline-lawsons {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .underline-lawsons::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px; /* thick structural underline */
+    bottom: -4px;
+    left: 0;
+    background-color: #FFE600;
+  }
+
+  body {
+    color: #373737;
+    background-color: #ffffff;
+  }
+</style>
