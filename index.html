@@ -185,12 +185,10 @@
             align-items: center;
             justify-content: center;
             padding: 0 40px;
-            filter: grayscale(100%) opacity(50%);
             transition: all 0.4s ease;
         }
 
         .brand-slide:hover {
-            filter: grayscale(0%) opacity(100%);
             transform: scale(1.05);
         }
 
@@ -245,54 +243,43 @@
         <!-- On mobile: flows below hero. On desktop: overlaps hero bottom -->
         <div class="relative md:absolute md:bottom-0 md:left-0 w-full z-20 md:translate-y-1/2">
             <div class="container mx-auto px-2 md:px-4">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6 max-w-6xl mx-auto drop-shadow-2xl">
+                <div
+                    class="grid grid-cols-2 md:grid-cols-4 gap-0 max-w-6xl mx-auto drop-shadow-2xl rounded-2xl overflow-hidden">
                     <!-- Feature Card 1 -->
                     <a href="#about"
-                        class="bg-[#E0E0E0] p-6 md:p-14 border border-gray-300 transition-all duration-300 hover:-translate-y-3 hover:shadow-xl text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
-                        <div
-                            class="absolute inset-0 bg-lawsons-green/5 opacity-0 group-hover:opacity-100 transition-opacity">
-                        </div>
+                        class="bg-[#E0E0E0] p-6 md:p-10 border-b md:border-b-0 md:border-r border-gray-300 transition-all duration-300 hover:bg-lawsons-green text-center group flex flex-col items-center justify-center relative overflow-hidden">
                         <span
-                            class="text-lawsons-dark font-bold uppercase tracking-widest text-sm md:text-xl relative z-10">About
+                            class="text-lawsons-dark group-hover:text-white font-bold uppercase tracking-widest text-sm md:text-xl relative z-10 transition-colors">About
                             Us</span>
                         <div
-                            class="w-10 h-1 bg-lawsons-green mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
+                            class="w-10 h-1 bg-lawsons-green group-hover:bg-lawsons-yellow mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
                         </div>
                     </a>
                     <!-- Feature Card 2 -->
                     <a href="#press"
-                        class="bg-[#E0E0E0] p-6 md:p-14 border border-gray-300 transition-all duration-300 hover:-translate-y-3 hover:shadow-xl text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
-                        <div
-                            class="absolute inset-0 bg-lawsons-green/5 opacity-0 group-hover:opacity-100 transition-opacity">
-                        </div>
+                        class="bg-[#E0E0E0] p-6 md:p-10 border-b md:border-b-0 md:border-r border-gray-300 transition-all duration-300 hover:bg-lawsons-green text-center group flex flex-col items-center justify-center relative overflow-hidden">
                         <span
-                            class="text-lawsons-dark font-bold uppercase tracking-widest text-sm md:text-xl relative z-10">Press</span>
+                            class="text-lawsons-dark group-hover:text-white font-bold uppercase tracking-widest text-sm md:text-xl relative z-10 transition-colors">Press</span>
                         <div
-                            class="w-10 h-1 bg-lawsons-green mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
+                            class="w-10 h-1 bg-lawsons-green group-hover:bg-lawsons-yellow mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
                         </div>
                     </a>
                     <!-- Feature Card 3 -->
                     <a href="#events"
-                        class="bg-[#E0E0E0] p-6 md:p-14 border border-gray-300 transition-all duration-300 hover:-translate-y-3 hover:shadow-xl text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
-                        <div
-                            class="absolute inset-0 bg-lawsons-green/5 opacity-0 group-hover:opacity-100 transition-opacity">
-                        </div>
+                        class="bg-[#E0E0E0] p-6 md:p-10 border-r border-gray-300 transition-all duration-300 hover:bg-lawsons-green text-center group flex flex-col items-center justify-center relative overflow-hidden">
                         <span
-                            class="text-lawsons-dark font-bold uppercase tracking-widest text-sm md:text-xl relative z-10">Events</span>
+                            class="text-lawsons-dark group-hover:text-white font-bold uppercase tracking-widest text-sm md:text-xl relative z-10 transition-colors">Events</span>
                         <div
-                            class="w-10 h-1 bg-lawsons-green mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
+                            class="w-10 h-1 bg-lawsons-green group-hover:bg-lawsons-yellow mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
                         </div>
                     </a>
                     <!-- Feature Card 4 -->
                     <a href="#careers"
-                        class="bg-[#E0E0E0] p-6 md:p-14 border border-gray-300 transition-all duration-300 hover:-translate-y-3 hover:shadow-xl text-center group flex flex-col items-center justify-center relative overflow-hidden strict-square">
-                        <div
-                            class="absolute inset-0 bg-lawsons-green/5 opacity-0 group-hover:opacity-100 transition-opacity">
-                        </div>
+                        class="bg-[#E0E0E0] p-6 md:p-10 transition-all duration-300 hover:bg-lawsons-green text-center group flex flex-col items-center justify-center relative overflow-hidden">
                         <span
-                            class="text-lawsons-dark font-bold uppercase tracking-widest text-sm md:text-xl relative z-10">Careers</span>
+                            class="text-lawsons-dark group-hover:text-white font-bold uppercase tracking-widest text-sm md:text-xl relative z-10 transition-colors">Careers</span>
                         <div
-                            class="w-10 h-1 bg-lawsons-green mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
+                            class="w-10 h-1 bg-lawsons-green group-hover:bg-lawsons-yellow mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
                         </div>
                     </a>
                 </div>
@@ -302,17 +289,17 @@
     <!-- === END HERO COMPONENT === -->
 
     <!-- === STATS COMPONENT === -->
-    <section class="pt-8 md:pt-40 pb-0 md:pb-24 bg-white">
+    <section class="pt-8 md:pt-20 pb-0 md:pb-12 bg-white">
         <div class="w-full">
             <div class="grid grid-cols-3 gap-0 text-center">
                 <!-- Stat 1 -->
                 <div
-                    class="p-8 md:p-20 bg-white text-lawsons-dark border-r border-gray-200 transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
+                    class="p-6 md:p-12 bg-white text-lawsons-dark border-r border-gray-200 transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
                     <div
                         class="absolute inset-0 bg-lawsons-green opacity-0 group-hover:opacity-5 transition-opacity duration-300">
                     </div>
                     <div
-                        class="text-3xl md:text-6xl font-bold mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-500 ease-out relative z-10 text-lawsons-green">
+                        class="text-3xl md:text-5xl font-bold mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-500 ease-out relative z-10 text-lawsons-green">
                         <span class="count-up" data-target="100">0</span>+
                     </div>
                     <div class="text-xs md:text-base font-bold uppercase tracking-widest text-gray-700 relative z-10">
@@ -324,12 +311,12 @@
                 </div>
                 <!-- Stat 2 -->
                 <div
-                    class="p-8 md:p-20 bg-white text-lawsons-dark border-r border-gray-200 transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
+                    class="p-6 md:p-12 bg-white text-lawsons-dark border-r border-gray-200 transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
                     <div
                         class="absolute inset-0 bg-lawsons-green opacity-0 group-hover:opacity-5 transition-opacity duration-300">
                     </div>
                     <div
-                        class="text-3xl md:text-6xl font-bold mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-500 ease-out relative z-10 text-lawsons-green">
+                        class="text-3xl md:text-5xl font-bold mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-500 ease-out relative z-10 text-lawsons-green">
                         <span class="count-up" data-target="700">0</span>+
                     </div>
                     <div class="text-xs md:text-base font-bold uppercase tracking-widest text-gray-700 relative z-10">
@@ -341,12 +328,12 @@
                 </div>
                 <!-- Stat 3 -->
                 <div
-                    class="p-8 md:p-20 bg-white text-lawsons-dark transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
+                    class="p-6 md:p-12 bg-white text-lawsons-dark transition-all duration-500 ease-in-out strict-square group flex flex-col items-center justify-center relative overflow-hidden">
                     <div
                         class="absolute inset-0 bg-lawsons-green opacity-0 group-hover:opacity-5 transition-opacity duration-300">
                     </div>
                     <div
-                        class="text-3xl md:text-6xl font-bold mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-500 ease-out relative z-10 text-lawsons-green">
+                        class="text-3xl md:text-5xl font-bold mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-500 ease-out relative z-10 text-lawsons-green">
                         <span class="count-up" data-target="35">0</span>+
                     </div>
                     <div class="text-xs md:text-base font-bold uppercase tracking-widest text-gray-700 relative z-10">
@@ -609,11 +596,10 @@
                         <div class="mb-6">
                             <button
                                 onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.toggle-icon').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '-';"
-                                class="w-full flex items-center justify-between text-sm font-bold tracking-widest uppercase text-lawsons-green mb-6 cursor-pointer focus:outline-none text-left border-b border-gray-100 pb-2">
-                                <div class="flex items-center gap-3">
-                                    <span
-                                        class="w-[3px] h-[3px] bg-lawsons-yellow inline-block strict-square transition-transform"></span>
-                                    Lawsons
+                                class="w-full flex items-center justify-between text-sm font-bold tracking-widest uppercase text-lawsons-green mb-6 cursor-pointer focus:outline-none text-left border-b border-gray-100 pb-4">
+                                <div class="flex items-center gap-3 h-8">
+                                    <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/lawsons-logo-2.png"
+                                        alt="Lawsons" class="h-full object-contain">
                                 </div>
                                 <span class="toggle-icon text-xl text-lawsons-green transition-transform">+</span>
                             </button>
@@ -627,13 +613,12 @@
                         <div class="mb-6">
                             <button
                                 onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.toggle-icon').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '-';"
-                                class="w-full flex items-center justify-between text-sm font-bold tracking-widest uppercase text-lawsons-green mb-6 cursor-pointer focus:outline-none text-left border-b border-gray-100 pb-2">
-                                <div class="flex items-center gap-3">
-                                    <span
-                                        class="w-[3px] h-[3px] bg-lawsons-yellow inline-block strict-square transition-transform"></span>
-                                    AVS Fencing
+                                class="w-full flex items-center justify-between text-sm font-bold tracking-widest uppercase text-[#1E3A8A] mb-6 cursor-pointer focus:outline-none text-left border-b border-gray-100 pb-4">
+                                <div class="flex items-center gap-3 h-8">
+                                    <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/AVS-Colour-2-1.png"
+                                        alt="AVS Fencing" class="h-full object-contain">
                                 </div>
-                                <span class="toggle-icon text-xl text-lawsons-green transition-transform">+</span>
+                                <span class="toggle-icon text-xl text-[#1E3A8A] transition-transform">+</span>
                             </button>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 hidden transition-all duration-300">
                                 <!-- JS will populate these blocks -->
@@ -643,17 +628,11 @@
 
                         <!-- Specialist Brands -->
                         <div>
-                            <button
-                                onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.toggle-icon').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '-';"
-                                class="w-full flex items-center justify-between text-sm font-bold tracking-widest uppercase text-lawsons-green mb-6 cursor-pointer focus:outline-none text-left border-b border-gray-100 pb-2">
-                                <div class="flex items-center gap-3">
-                                    <span
-                                        class="w-[3px] h-[3px] bg-lawsons-yellow inline-block strict-square transition-transform"></span>
-                                    Specialist Brands
-                                </div>
-                                <span class="toggle-icon text-xl text-lawsons-green transition-transform">+</span>
-                            </button>
-                            <div class="grid grid-cols-1 gap-4 hidden transition-all duration-300">
+                            <div
+                                class="w-full flex items-center justify-between text-sm font-bold tracking-widest uppercase text-lawsons-dark mb-6 text-left border-b border-gray-100 pb-2">
+                                <span class="lawsons-underline">Specialist Brands</span>
+                            </div>
+                            <div class="grid grid-cols-1 gap-4 transition-all duration-300">
                                 <!-- JS will populate these blocks -->
                                 <div class="specialist-branch-list flex flex-col gap-3"></div>
                             </div>
@@ -739,11 +718,11 @@
             },
             specialist: {
                 items: [
-                    { name: "Briants", address: "Green Close Works, Thame Rd, Longwick, Princes Risborough HP27 9SG", color: "#9333EA", lat: 51.724, lng: -0.831, contactUrl: brandWebsites.briants },
-                    { name: "Oxford Fencing", address: "Kingston Business Park, Kingston Bagpuize, Abingdon OX13 5AS", color: "#EA580C", lat: 51.678, lng: -1.382, contactUrl: brandWebsites.oxfordFencing },
-                    { name: "The Landscape Centre", address: "Does Corner, Maldon Rd, Ulting, Maldon CM9 6QQ", color: "#16A34A", lat: 51.731, lng: 0.671, contactUrl: brandWebsites.landscapeCentre },
-                    { name: "Southill Sawmills", address: "Southill, Park, Southill, Biggleswade SG18 9LW", color: "#B45309", lat: 52.083, lng: -0.324, contactUrl: brandWebsites.southillSawmills },
-                    { name: "Witham Timber", address: "Lealand Way, Marsh Ln, Boston PE21 7SW", color: "#E11D48", lat: 52.977, lng: -0.024, contactUrl: brandWebsites.withamTimber },
+                    { name: "Briants", address: "Green Close Works, Thame Rd, Longwick, Princes Risborough HP27 9SG", color: "#E3000F", lat: 51.724, lng: -0.831, contactUrl: brandWebsites.briants },
+                    { name: "Oxford Fencing", address: "Kingston Business Park, Kingston Bagpuize, Abingdon OX13 5AS", color: "#002F6C", lat: 51.678, lng: -1.382, contactUrl: brandWebsites.oxfordFencing },
+                    { name: "The Landscape Centre", address: "Does Corner, Maldon Rd, Ulting, Maldon CM9 6QQ", color: "#4CAF50", lat: 51.731, lng: 0.671, contactUrl: brandWebsites.landscapeCentre },
+                    { name: "Southill Sawmills", address: "Southill, Park, Southill, Biggleswade SG18 9LW", color: "#008A44", lat: 52.083, lng: -0.324, contactUrl: brandWebsites.southillSawmills },
+                    { name: "Witham Timber", address: "Lealand Way, Marsh Ln, Boston PE21 7SW", color: "#00539F", lat: 52.977, lng: -0.024, contactUrl: brandWebsites.withamTimber },
                 ]
             }
         };
