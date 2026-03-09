@@ -241,10 +241,10 @@
 
         <!-- Hero Navigation Bar (Feature Cards) -->
         <!-- On mobile: flows below hero. On desktop: overlaps hero bottom -->
-        <div class="relative md:absolute md:bottom-0 md:left-0 w-full z-20 md:translate-y-1/2">
+        <div class="relative w-full z-20 md:absolute md:bottom-0 md:left-0 md:translate-y-1/2">
             <div class="container mx-auto px-2 md:px-4">
                 <div
-                    class="grid grid-cols-2 md:grid-cols-4 gap-0 max-w-6xl mx-auto drop-shadow-2xl rounded-2xl overflow-hidden">
+                    class="grid grid-cols-2 md:grid-cols-4 gap-0 max-w-6xl mx-auto drop-shadow-2xl rounded-2xl overflow-hidden mt-4 md:mt-0">
                     <!-- Feature Card 1 -->
                     <a href="#about"
                         class="bg-[#E0E0E0] p-6 md:p-10 border-b md:border-b-0 md:border-r border-gray-300 transition-all duration-300 hover:bg-lawsons-green text-center group flex flex-col items-center justify-center relative overflow-hidden">
@@ -620,6 +620,30 @@
 
                         <!-- Specialist Brands -->
                         <div>
+                            <div
+                                class="w-full flex items-center justify-between text-sm font-bold tracking-widest uppercase text-lawsons-dark mb-6 text-left border-b border-gray-100 pb-2">
+                                <span class="lawsons-underline">Specialist Brands</span>
+                            </div>
+                            <div class="w-full flex flex-col gap-4 text-left border-b border-gray-100 pb-6 mb-6">
+                                <span
+                                    class="text-sm font-bold tracking-widest uppercase text-lawsons-dark lawsons-underline self-start">Other
+                                    Brands</span>
+
+                                <!-- Mini Logo Grid -->
+                                <div
+                                    class="grid grid-cols-3 md:grid-cols-5 gap-3 mt-4 items-center justify-items-center opacity-70">
+                                    <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/2015-Rect-logo-1-1300x334.png"
+                                        alt="Briants" class="h-6 object-contain">
+                                    <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/Oxford-2.png"
+                                        alt="Oxford Fencing" class="h-6 object-contain">
+                                    <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/TLC-2-400x103.png"
+                                        alt="TLC" class="h-6 object-contain">
+                                    <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/Southill-2.png"
+                                        alt="Southill" class="h-6 object-contain">
+                                    <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/12/Witham-Timber-update-1300x303.png"
+                                        alt="Witham" class="h-6 h-[18px] object-contain">
+                                </div>
+                            </div>
                             <div class="grid grid-cols-1 gap-4 transition-all duration-300">
                                 <!-- JS will populate these blocks -->
                                 <div class="specialist-branch-list flex flex-col gap-3"></div>
@@ -831,6 +855,38 @@
             maxZoom: 19
         }).addTo(map);
 
+        // Greater London GeoJSON Highlight
+        const londonGeoJSON = {
+            "type": "Feature",
+            "properties": {
+                "name": "Greater London",
+                "description": "Our primary operating area."
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[
+                    [-0.510, 51.286], [-0.510, 51.692], [0.334, 51.692], [0.334, 51.286], [-0.510, 51.286]
+                ]] // Simplified bounding box for Greater London representation
+            }
+        };
+
+        const londonLayer = L.geoJSON(londonGeoJSON, {
+            style: {
+                color: "#009640", // Lawsons Green
+                weight: 2,
+                opacity: 0.8,
+                fillColor: "#009640",
+                fillOpacity: 0.15
+            }
+        }).addTo(map);
+
+        // Bind label indicating main operating area
+        londonLayer.bindTooltip("<strong>Greater London</strong><br>Main Operating Area", {
+            permanent: true,
+            direction: 'center',
+            className: 'custom-tooltip text-center bg-white/90 backdrop-blur-sm'
+        }).openTooltip();
+
         const allBranches = [];
         branchesData.lawsons.items.forEach(b => allBranches.push({ ...b, color: branchesData.lawsons.color, brand: "Lawsons" }));
         branchesData.avs.items.forEach(b => allBranches.push({ ...b, color: branchesData.avs.color, brand: "AVS Fencing" }));
@@ -862,9 +918,14 @@
             }
         });
 
-        // Automatically zoom and pan to perfectly frame all generated markers — zoomed in slightly more
+        // Automatically zoom and pan to perfectly frame all generated markers
         if (bounds.length > 0) {
-            map.fitBounds(bounds, { padding: [30, 30], maxZoom: 9 });
+            // Apply different padding constraints based on device screen size to ensure fit
+            const isMobile = window.innerWidth < 768;
+            map.fitBounds(bounds, {
+                padding: isMobile ? [10, 10] : [30, 30],
+                maxZoom: isMobile ? 8 : 9
+            });
         }
 
         // Hero Slider Auto-Cycle
@@ -883,4 +944,3 @@
 
 
 </html>
-
