@@ -671,6 +671,7 @@
     <!-- Leaflet JS Script -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="./london_data.js"></script>
     <script>
         // Brand website URLs for linking
         const brandWebsites = {
@@ -856,21 +857,7 @@
         }).addTo(map);
 
         // Greater London GeoJSON Highlight
-        const londonGeoJSON = {
-            "type": "Feature",
-            "properties": {
-                "name": "Greater London",
-                "description": "Our primary operating area."
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [[
-                    [-0.510, 51.286], [-0.510, 51.692], [0.334, 51.692], [0.334, 51.286], [-0.510, 51.286]
-                ]] // Simplified bounding box for Greater London representation
-            }
-        };
-
-        const londonLayer = L.geoJSON(londonGeoJSON, {
+        const londonLayer = L.geoJSON(londonData, {
             style: {
                 color: "#009640", // Lawsons Green
                 weight: 2,
