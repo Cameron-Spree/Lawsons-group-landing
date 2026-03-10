@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
+    <!-- ✂️ ABOUT US REVEAL UPDATE (HEAD) ✂️ -->
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- ✂️ END ABOUT US REVEAL UPDATE (HEAD) ✂️ -->
+
     <!-- TrustBox script -->
     <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
     <!-- End TrustBox script -->
@@ -216,6 +221,20 @@
         .hero-slide.active {
             opacity: 1;
         }
+
+        /* ✂️ ABOUT US REVEAL UPDATE (CSS) ✂️ */
+        /* Hero 'About Us' Hover/Tap Reveal Card */
+        .hover-card-parent:hover .primary-content,
+        .hover-card-parent.is-active .primary-content {
+            transform: translateY(-100%);
+        }
+
+        .hover-card-parent:hover .reveal-content,
+        .hover-card-parent.is-active .reveal-content {
+            transform: translateY(0);
+        }
+
+        /* ✂️ END ABOUT US REVEAL UPDATE (CSS) ✂️ */
     </style>
     <!-- ✂️ WIDGET 0 END: HEAD SCRIPTS (Stop copying here) ✂️ -->
 </head>
@@ -250,16 +269,61 @@
             <div class="w-full md:container md:mx-auto md:px-4">
                 <div
                     class="grid grid-cols-2 md:grid-cols-4 gap-0 w-full md:max-w-6xl mx-auto md:drop-shadow-2xl md:rounded-2xl overflow-hidden mt-0">
-                    <!-- Feature Card 1 -->
-                    <a href="#about"
-                        class="bg-[#E0E0E0] p-6 md:p-10 border-b md:border-b-0 md:border-r border-gray-300 transition-all duration-300 hover:bg-lawsons-green text-center group flex flex-col items-center justify-center relative overflow-hidden">
-                        <span
-                            class="text-lawsons-dark group-hover:text-white font-bold uppercase tracking-widest text-sm md:text-xl relative z-10 transition-colors">About
-                            Us</span>
+                    <!-- ✂️ ABOUT US REVEAL UPDATE (HTML) ✂️ -->
+                    <!-- Feature Card 1: Slide-Up Reveal -->
+                    <div class="relative bg-[#E0E0E0] p-6 md:p-10 border-b md:border-b-0 md:border-r border-gray-300 md:hover:-translate-y-2 transition-all duration-300 text-center flex flex-col items-center justify-center overflow-hidden hover-card-parent cursor-pointer"
+                        onclick="this.classList.toggle('is-active');">
+
+                        <!-- Primary Content (Visible initially) -->
                         <div
-                            class="w-10 h-1 bg-lawsons-green group-hover:bg-lawsons-yellow mt-4 group-hover:w-16 transition-all duration-300 relative z-10">
+                            class="primary-content flex flex-col items-center justify-center w-full h-full transition-transform duration-500 ease-in-out">
+                            <span
+                                class="text-lawsons-dark font-bold uppercase tracking-widest text-sm md:text-xl relative z-10 transition-colors">About
+                                Us</span>
+                            <div class="w-10 h-1 bg-lawsons-green mt-4 transition-all duration-300 relative z-10"></div>
                         </div>
-                    </a>
+
+                        <!-- Reveal Content (Hidden below initially) -->
+                        <div
+                            class="reveal-content absolute inset-0 bg-lawsons-green flex flex-col justify-center items-start px-6 transform translate-y-full transition-transform duration-500 ease-in-out font-bold uppercase tracking-widest text-[12px] text-white">
+                            <ul class="w-full text-left flex flex-col">
+                                <li class="border-b border-white/10 w-full group/link">
+                                    <a href="#history"
+                                        class="w-full py-3 flex items-center justify-between hover:text-lawsons-yellow transition-colors">
+                                        <div class="flex items-center gap-3">
+                                            <i data-lucide="history" class="w-4 h-4"></i>
+                                            <span>History</span>
+                                        </div>
+                                        <i data-lucide="chevron-right"
+                                            class="w-4 h-4 text-lawsons-yellow opacity-0 group-hover/link:opacity-100 transition-opacity -translate-x-2 group-hover/link:translate-x-0"></i>
+                                    </a>
+                                </li>
+                                <li class="border-b border-white/10 w-full group/link">
+                                    <a href="#board"
+                                        class="w-full py-3 flex items-center justify-between hover:text-lawsons-yellow transition-colors">
+                                        <div class="flex items-center gap-3">
+                                            <i data-lucide="users" class="w-4 h-4"></i>
+                                            <span>The Board</span>
+                                        </div>
+                                        <i data-lucide="chevron-right"
+                                            class="w-4 h-4 text-lawsons-yellow opacity-0 group-hover/link:opacity-100 transition-opacity -translate-x-2 group-hover/link:translate-x-0"></i>
+                                    </a>
+                                </li>
+                                <li class="w-full group/link">
+                                    <a href="#info"
+                                        class="w-full py-3 flex items-center justify-between hover:text-lawsons-yellow transition-colors">
+                                        <div class="flex items-center gap-3">
+                                            <i data-lucide="info" class="w-4 h-4"></i>
+                                            <span>Company Info</span>
+                                        </div>
+                                        <i data-lucide="chevron-right"
+                                            class="w-4 h-4 text-lawsons-yellow opacity-0 group-hover/link:opacity-100 transition-opacity -translate-x-2 group-hover/link:translate-x-0"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- ✂️ END ABOUT US REVEAL UPDATE (HTML) ✂️ -->
                     <!-- Feature Card 2 -->
                     <a href="#press"
                         class="bg-[#E0E0E0] p-6 md:p-10 border-b md:border-b-0 md:border-r border-gray-300 transition-all duration-300 hover:bg-lawsons-green text-center group flex flex-col items-center justify-center relative overflow-hidden">
@@ -942,6 +1006,13 @@
             }, 100);
 
         }, 500); // 500ms delay for Elementor rendering
+
+        // ✂️ ABOUT US REVEAL UPDATE (JS) ✂️
+        // Initialize Lucide Icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        // ✂️ END ABOUT US REVEAL UPDATE (JS) ✂️
 
     </script>
 </body>
