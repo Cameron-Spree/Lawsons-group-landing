@@ -224,12 +224,20 @@
 
         /* ✂️ ABOUT US REVEAL UPDATE (CSS) ✂️ */
         /* Hero 'About Us' Hover/Tap Reveal Card */
-        .hover-card-parent:hover .primary-content,
+        @media (hover: hover) {
+            .hover-card-parent:hover .primary-content {
+                transform: translateY(-100%);
+            }
+
+            .hover-card-parent:hover .reveal-content {
+                transform: translateY(0);
+            }
+        }
+
         .hover-card-parent.is-active .primary-content {
             transform: translateY(-100%);
         }
 
-        .hover-card-parent:hover .reveal-content,
         .hover-card-parent.is-active .reveal-content {
             transform: translateY(0);
         }
@@ -286,7 +294,13 @@
                         <!-- Reveal Content (Hidden below initially) -->
                         <div
                             class="reveal-content absolute inset-0 bg-lawsons-green flex flex-col justify-center items-start px-6 transform translate-y-full transition-transform duration-500 ease-in-out font-bold uppercase tracking-widest text-[12px] text-white">
-                            <ul class="w-full text-left flex flex-col">
+
+                            <!-- Mobile Close 'X' Affordance -->
+                            <div class="absolute top-2 right-2 md:hidden p-2 opacity-50">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </div>
+
+                            <ul class="w-full text-left flex flex-col mt-2 md:mt-0">
                                 <li class="border-b border-white/10 w-full group/link">
                                     <a href="#history"
                                         class="w-full py-3 flex items-center justify-between hover:text-lawsons-yellow transition-colors">
@@ -1012,6 +1026,16 @@
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
+
+        // Close hover cards when clicking outside (Mobile UX)
+        document.addEventListener('click', function (e) {
+            const hoverCards = document.querySelectorAll('.hover-card-parent.is-active');
+            hoverCards.forEach(card => {
+                if (!card.contains(e.target)) {
+                    card.classList.remove('is-active');
+                }
+            });
+        });
         // ✂️ END ABOUT US REVEAL UPDATE (JS) ✂️
 
     </script>
