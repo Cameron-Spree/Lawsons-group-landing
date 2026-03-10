@@ -749,7 +749,7 @@
                 <h5 class="font-semibold tracking-wide text-lawsons-dark text-base" style="color: ${brandColor || branch.color};">${branch.name}</h5>
                 <p class="text-xs font-light text-gray-500 mt-2 mb-3 leading-relaxed tracking-wide relative z-10">${branch.address}</p>
                 ${branch.phone ? `<p class="text-xs font-medium text-lawsons-dark mb-4 tracking-wider relative z-10">📞 ${branch.phone}</p>` : ''}
-                <a href="${contactUrl || branch.contactUrl || '#'}" target="_blank" rel="noopener" class="inline-block text-[10px] font-bold uppercase tracking-widest text-lawsons-dark hover:text-black transition-colors relative z-10">
+                <a href="${branch.contactUrl || contactUrl || '#'}" target="_blank" rel="noopener" class="inline-block text-[10px] font-bold uppercase tracking-widest text-lawsons-dark hover:text-black transition-colors relative z-10">
                     <span class="relative z-10">More Information</span>
                     <span class="absolute bottom-[-4px] left-0 w-full h-[1px] transition-colors" style="background-color: ${brandColor || branch.color};"></span>
                 </a>
