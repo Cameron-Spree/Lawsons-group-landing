@@ -590,7 +590,7 @@
 
                     <div class="px-10 lg:px-14 pb-10 lg:pb-14 flex flex-col gap-8">
                         <!-- Lawsons Branches -->
-                        <div class="mb-6">
+                        <div class="mb-2">
                             <button
                                 onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.toggle-icon').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '-';"
                                 class="w-full flex items-center justify-between text-sm font-bold tracking-widest uppercase text-lawsons-green mb-6 cursor-pointer focus:outline-none text-left border-b border-gray-100 pb-4">
@@ -607,7 +607,7 @@
                         </div>
 
                         <!-- AVS Branches -->
-                        <div class="mb-6">
+                        <div class="mb-2">
                             <button
                                 onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.toggle-icon').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '-';"
                                 class="w-full flex items-center justify-between text-sm font-bold tracking-widest uppercase text-[#1E3A8A] mb-6 cursor-pointer focus:outline-none text-left border-b border-gray-100 pb-4">
@@ -624,15 +624,18 @@
                         </div>
 
                         <!-- Specialist Brands -->
-                        <div>
-                            <div class="w-full flex flex-col gap-4 text-left border-b border-gray-100 pb-6 mb-6">
-                                <span
-                                    class="text-sm font-bold tracking-widest uppercase text-lawsons-dark lawsons-underline self-start">Other
-                                    Brands</span>
+                        <div class="mb-2">
+                            <button
+                                onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.toggle-icon').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '-';"
+                                class="w-full flex items-center justify-between text-sm font-bold tracking-widest uppercase text-lawsons-dark mb-4 cursor-pointer focus:outline-none text-left border-b border-gray-100 pb-4">
+                                <span class="lawsons-underline">Specialist Brands</span>
+                                <span class="toggle-icon text-xl text-lawsons-dark transition-transform">+</span>
+                            </button>
 
+                            <div class="w-full flex-col gap-4 text-left hidden transition-all duration-300">
                                 <!-- Mini Logo Grid -->
                                 <div
-                                    class="grid grid-cols-3 md:grid-cols-5 gap-3 mt-4 items-center justify-items-center opacity-70">
+                                    class="grid grid-cols-3 md:grid-cols-5 gap-3 mb-6 items-center justify-items-center opacity-70">
                                     <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/2015-Rect-logo-1-1300x334.png"
                                         alt="Briants" class="h-6 object-contain" style="height: 24px;">
                                     <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/04/Oxford-2.png"
@@ -644,13 +647,12 @@
                                     <img src="https://lawsonsgroup.co.uk/wp-content/uploads/2024/12/Witham-Timber-update-1300x303.png"
                                         alt="Witham" class="h-6 h-[18px] object-contain" style="height: 18px;">
                                 </div>
-                            </div>
-                            <div class="grid grid-cols-1 gap-4 transition-all duration-300">
-                                <!-- JS will populate these blocks -->
-                                <div class="specialist-branch-list flex flex-col gap-3"></div>
+                                <div class="grid grid-cols-1 gap-4 transition-all duration-300">
+                                    <!-- JS will populate these blocks -->
+                                    <div class="specialist-branch-list flex flex-col gap-3"></div>
+                                </div>
                             </div>
                         </div>
-
                     </div> <!-- End of inner padded container -->
                 </div>
             </div>
