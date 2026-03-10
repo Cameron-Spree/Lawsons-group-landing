@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Lawsons Group - Corporate Overview</title>
+    <!-- ✂️ WIDGET 0 START: HEAD SCRIPTS (Copy from here) ✂️ -->
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -216,6 +217,7 @@
             opacity: 1;
         }
     </style>
+    <!-- ✂️ WIDGET 0 END: HEAD SCRIPTS (Stop copying here) ✂️ -->
 </head>
 
 <body class="antialiased overflow-x-hidden">
@@ -690,25 +692,25 @@
                 color: "#009640", // Lawsons Green
                 contactUrl: brandWebsites.lawsons,
                 items: [
-                    { name: "Acton", address: "2/4 Colville Rd, London, W3 8BL", phone: "020 8992 1177", lat: 51.528, lng: -0.274 },
-                    { name: "Ascot", address: "Englemere sawmill, London Rd, Winkfield Row, Ascot, SL5 8DG", phone: "01344 885451", lat: 51.411, lng: -0.672 },
-                    { name: "Bedford", address: "Cambridge Rd, Bedford, MK42 0LH", phone: "01234 273077", lat: 52.126, lng: -0.463 },
-                    { name: "Camden", address: "North, 53 Blundell St, London, N7 9BN", phone: "020 7619 6470", lat: 51.543, lng: -0.133 },
-                    { name: "Crawley", address: "Telford Pl, Crawley, RH10 1SY", phone: "01293 535054", lat: 51.116, lng: -0.183 },
-                    { name: "Colney Heath", address: "Tyttenhanger Farm, Coursers Rd, St Albans AL4 0PG", phone: "01727 747320", lat: 51.740, lng: -0.252 },
-                    { name: "Coulsdon", address: "Woodcote Grove Rd, Coulsdon CR5 2AG", phone: "020 8660 0807", lat: 51.320, lng: -0.136 },
-                    { name: "Edgware", address: "301 Burnt Oak Broadway, Burnt Oak, Edgware HA8 5ED", phone: "020 8952 0111", lat: 51.611, lng: -0.278 },
-                    { name: "Edmonton", address: "401 Montagu Rd, London N9 0HP", phone: "020 8803 6922", lat: 51.625, lng: -0.053 },
-                    { name: "Letchworth", address: "Unit 1 Umo Park, Blackhorse Rd, Letchworth Garden City SG6 1HR", phone: "01462 686838", lat: 51.982, lng: -0.230 },
-                    { name: "Merton", address: "5-7 Lombard Rd, London SW19 3TZ", phone: "020 8884 5020", lat: 51.416, lng: -0.190 },
-                    { name: "New Malden", address: "Unit 16, Adams Industrial Estate, St Johns Rd, New Malden KT3 3SQ", phone: "020 8336 1188", lat: 51.401, lng: -0.254 },
-                    { name: "Salfords", address: "Bonehurst Rd, Salfords RH6 8PP", phone: "01293 784459", lat: 51.189, lng: -0.169 },
-                    { name: "Sidcup", address: "Unit 2 Five Arches Business Estate, Maidstone Rd, Sidcup DA14 5AE", phone: "020 8312 1902", lat: 51.424, lng: 0.103 },
-                    { name: "Southill", address: "Southill Play Area, Southill, Biggleswade SG18 9LW", phone: "01462 819173", lat: 52.083, lng: -0.324 },
-                    { name: "Redhill", address: "58 Holmethorpe Ave, Holmethorpe, Redhill RH1 2NL", phone: "01737 766884", lat: 51.246, lng: -0.165 },
-                    { name: "Romford", address: "164 Collier Row Rd, Romford RM5 2BD", phone: "01708 767716", lat: 51.591, lng: 0.183 },
-                    { name: "Wandsworth", address: "20 Smugglers Way, London, SW18 1EG", phone: "020 8871 1188", lat: 51.461, lng: -0.192 },
-                    { name: "Whetstone", address: "1208 High Rd, London N20 0LL", phone: "020 8446 1321", lat: 51.632, lng: -0.177 }
+                    { name: "Acton", address: "2/4 Colville Rd, London, W3 8BL", phone: "020 8992 1177", lat: 51.528, lng: -0.274, contactUrl: "https://www.lawsons.co.uk/store/acton" },
+                    { name: "Ascot", address: "Englemere sawmill, London Rd, Winkfield Row, Ascot, SL5 8DG", phone: "01344 885451", lat: 51.411, lng: -0.672, contactUrl: "https://www.lawsons.co.uk/store/ascot" },
+                    { name: "Bedford", address: "Cambridge Rd, Bedford, MK42 0LH", phone: "01234 273077", lat: 52.126, lng: -0.463, contactUrl: "https://www.lawsons.co.uk/store/bedford" },
+                    { name: "Camden", address: "North, 53 Blundell St, London, N7 9BN", phone: "020 7619 6470", lat: 51.543, lng: -0.133, contactUrl: "https://www.lawsons.co.uk/store/camden" },
+                    { name: "Crawley", address: "Telford Pl, Crawley, RH10 1SY", phone: "01293 535054", lat: 51.116, lng: -0.183, contactUrl: "https://www.lawsons.co.uk/store/crawley" },
+                    { name: "Colney Heath", address: "Tyttenhanger Farm, Coursers Rd, St Albans AL4 0PG", phone: "01727 747320", lat: 51.740, lng: -0.252, contactUrl: "https://www.lawsons.co.uk/store/colney-heath" },
+                    { name: "Coulsdon", address: "Woodcote Grove Rd, Coulsdon CR5 2AG", phone: "020 8660 0807", lat: 51.320, lng: -0.136, contactUrl: "https://www.lawsons.co.uk/store/coulsdon" },
+                    { name: "Edgware", address: "301 Burnt Oak Broadway, Burnt Oak, Edgware HA8 5ED", phone: "020 8952 0111", lat: 51.611, lng: -0.278, contactUrl: "https://www.lawsons.co.uk/store/edgware" },
+                    { name: "Edmonton", address: "401 Montagu Rd, London N9 0HP", phone: "020 8803 6922", lat: 51.625, lng: -0.053, contactUrl: "https://www.lawsons.co.uk/store/edmonton" },
+                    { name: "Letchworth", address: "Unit 1 Umo Park, Blackhorse Rd, Letchworth Garden City SG6 1HR", phone: "01462 686838", lat: 51.982, lng: -0.230, contactUrl: "https://www.lawsons.co.uk/store/letchworth" },
+                    { name: "Merton", address: "5-7 Lombard Rd, London SW19 3TZ", phone: "020 8884 5020", lat: 51.416, lng: -0.190, contactUrl: "https://www.lawsons.co.uk/store/merton" },
+                    { name: "New Malden", address: "Unit 16, Adams Industrial Estate, St Johns Rd, New Malden KT3 3SQ", phone: "020 8336 1188", lat: 51.401, lng: -0.254, contactUrl: "https://www.lawsons.co.uk/store/new-malden" },
+                    { name: "Salfords", address: "Bonehurst Rd, Salfords RH6 8PP", phone: "01293 784459", lat: 51.189, lng: -0.169, contactUrl: "https://www.lawsons.co.uk/store/salfords" },
+                    { name: "Sidcup", address: "Unit 2 Five Arches Business Estate, Maidstone Rd, Sidcup DA14 5AE", phone: "020 8312 1902", lat: 51.424, lng: 0.103, contactUrl: "https://www.lawsons.co.uk/store/sidcup" },
+                    { name: "Southill", address: "Southill Play Area, Southill, Biggleswade SG18 9LW", phone: "01462 819173", lat: 52.083, lng: -0.324, contactUrl: "https://www.lawsons.co.uk/store/southill" },
+                    { name: "Redhill", address: "58 Holmethorpe Ave, Holmethorpe, Redhill RH1 2NL", phone: "01737 766884", lat: 51.246, lng: -0.165, contactUrl: "https://www.lawsons.co.uk/store/redhill" },
+                    { name: "Romford", address: "164 Collier Row Rd, Romford RM5 2BD", phone: "01708 767716", lat: 51.591, lng: 0.183, contactUrl: "https://www.lawsons.co.uk/store/romford" },
+                    { name: "Wandsworth", address: "20 Smugglers Way, London, SW18 1EG", phone: "020 8871 1188", lat: 51.461, lng: -0.192, contactUrl: "https://www.lawsons.co.uk/store/wandsworth" },
+                    { name: "Whetstone", address: "1208 High Rd, London N20 0LL", phone: "020 8446 1321", lat: 51.632, lng: -0.177, contactUrl: "https://www.lawsons.co.uk/store/whetstone" }
                 ]
             },
             avs: {
@@ -899,6 +901,12 @@
                         direction: 'top',
                         offset: [0, -10],
                         className: 'custom-tooltip'
+                    });
+
+                    // Add click event to open the specific branch URL
+                    marker.on('click', function () {
+                        const destinationUrl = branch.contactUrl || brandWebsites.lawsons;
+                        window.open(destinationUrl, '_blank');
                     });
 
                     bounds.push([branch.lat, branch.lng]);
