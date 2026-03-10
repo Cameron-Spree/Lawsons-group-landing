@@ -795,10 +795,7 @@
         branchesData.specialist.items.forEach((b) => {
             specHtml += createBranchHTML(b); // uses internal branch.color and branch.contactUrl
         });
-        const specGrid = document.querySelector('.specialist-branch-list').parentElement;
-        specGrid.innerHTML = `
-            <div class="flex flex-col gap-5">${specHtml}</div>
-        `;
+        document.querySelector('.specialist-branch-list').innerHTML = specHtml;
 
         // Wrap observers in DOMContentLoaded to ensure Elementor has mounted the HTML first
         document.addEventListener('DOMContentLoaded', () => {
