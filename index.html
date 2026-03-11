@@ -976,7 +976,7 @@
             allBranches.forEach((branch) => {
                 if (branch.lat && branch.lng) {
                     const marker = L.marker([branch.lat, branch.lng], {
-                        icon: createMarkerIcon(branch.color)
+                        icon: createMarkerIcon(branch.color, branch.brand)
                     }).addTo(map);
 
                     marker.bindTooltip(branch.name, {
