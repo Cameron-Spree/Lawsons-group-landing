@@ -958,14 +958,19 @@
             branchesData.avs.items.forEach(b => allBranches.push({ ...b, color: branchesData.avs.color, brand: "AVS Fencing" }));
             branchesData.specialist.items.forEach(b => allBranches.push({ ...b, color: b.color, brand: "Specialist" }));
 
+            // ✂️ MAP MARKER COLOR UPDATE ✂️
             const createMarkerIcon = (color) => {
+                // Here we override the dynamic 'color' parameter (which is the brand color) 
+                // and force all map dots to be red (#E3000F). The sidebar list still uses the 'color' variable!
+                const markerColor = "#E3000F";
                 return L.divIcon({
                     className: 'custom-map-marker',
-                    html: `<div style="background-color: ${color}; width: 14px; height: 14px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 0 rgba(255,255,255,0.7); animation: pulse-ring-marker 2s infinite cubic-bezier(0.66, 0, 0, 1);"></div>`,
+                    html: `<div style="background-color: ${markerColor}; width: 14px; height: 14px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 0 rgba(255,255,255,0.7); animation: pulse-ring-marker 2s infinite cubic-bezier(0.66, 0, 0, 1);"></div>`,
                     iconSize: [14, 14],
                     iconAnchor: [7, 7]
                 });
             };
+            // ✂️ END MAP MARKER COLOR UPDATE ✂️
 
             const bounds = [];
             allBranches.forEach((branch) => {
